@@ -1,0 +1,554 @@
+%Version 2.1 April 2023
+% See section 11 of the User Manual for version history
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                 %%
+%% Please do not use \input{...} to include other tex files.       %%
+%% Submit your LaTeX manuscript as one .tex document.              %%
+%%                                                                 %%
+%% All additional figures and files should be attached             %%
+%% separately and not embedded in the \TeX\ document itself.       %%
+%%                                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%\documentclass[referee,sn-basic]{sn-jnl}% referee option is meant for double line spacing
+
+%%=======================================================%%
+%% to print line numbers in the margin use lineno option %%
+%%=======================================================%%
+
+%%\documentclass[lineno,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+
+%%======================================================%%
+%% to compile with pdflatex/xelatex use pdflatex option %%
+%%======================================================%%
+
+%%\documentclass[pdflatex,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+
+
+%%Note: the following reference styles support Namedate and Numbered referencing. By default the style follows the most common style. To switch between the options you can add or remove Numbered in the optional parenthesis. 
+%%The option is available for: sn-basic.bst, sn-vancouver.bst, sn-chicago.bst, sn-mathphys.bst. %  
+ 
+%%\documentclass[sn-nature]{sn-jnl}% Style for submissions to Nature Portfolio journals
+%%\documentclass[sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+\documentclass[sn-mathphys,Numbered]{sn-jnl}% Math and Physical Sciences Reference Style
+%%\documentclass[sn-aps]{sn-jnl}% American Physical Society (APS) Reference Style
+%%\documentclass[sn-vancouver,Numbered]{sn-jnl}% Vancouver Reference Style
+%%\documentclass[sn-apa]{sn-jnl}% APA Reference Style 
+%%\documentclass[sn-chicago]{sn-jnl}% Chicago-based Humanities Reference Style
+%%\documentclass[default]{sn-jnl}% Default
+%%\documentclass[default,iicol]{sn-jnl}% Default with double column layout
+
+%%%% Standard Packages
+%%<additional latex packages if required can be included here>
+
+\usepackage{graphicx}%
+\usepackage{multirow}%
+\usepackage{amsmath,amssymb,amsfonts}%
+\usepackage{amsthm}%
+\usepackage{mathrsfs}%
+\usepackage[title]{appendix}%
+\usepackage{xcolor}%
+\usepackage{textcomp}%
+\usepackage{manyfoot}%
+\usepackage{booktabs}%
+\usepackage{algorithm}%
+\usepackage{algorithmicx}%
+\usepackage{algpseudocode}%
+\usepackage{listings}%
+%%%%
+
+\usepackage{fourier} 
+\usepackage{array}
+\usepackage{makecell}
+
+\renewcommand\theadalign{bc}
+\renewcommand\theadfont{\bfseries}
+\renewcommand\theadgape{\Gape[4pt]}
+\renewcommand\cellgape{\Gape[4pt]}
+
+
+
+
+
+%%%%%=============================================================================%%%%
+%%%%  Remarks: This template is provided to aid authors with the preparation
+%%%%  of original research articles intended for submission to journals published 
+%%%%  by Springer Nature. The guidance has been prepared in partnership with 
+%%%%  production teams to conform to Springer Nature technical requirements. 
+%%%%  Editorial and presentation requirements differ among journal portfolios and 
+%%%%  research disciplines. You may find sections in this template are irrelevant 
+%%%%  to your work and are empowered to omit any such section if allowed by the 
+%%%%  journal you intend to submit to. The submission guidelines and policies 
+%%%%  of the journal take precedence. A detailed User Manual is available in the 
+%%%%  template package for technical guidance.
+%%%%%=============================================================================%%%%
+
+%\jyear{2021}%
+
+%% as per the requirement new theorem styles can be included as shown below
+\theoremstyle{thmstyleone}%
+\newtheorem{theorem}{Theorem}%  meant for continuous numbers
+%%\newtheorem{theorem}{Theorem}[section]% meant for sectionwise numbers
+%% optional argument [theorem] produces theorem numbering sequence instead of independent numbers for Proposition
+\newtheorem{proposition}[theorem]{Proposition}% 
+%%\newtheorem{proposition}{Proposition}% to get separate numbers for theorem and proposition etc.
+
+\theoremstyle{thmstyletwo}%
+\newtheorem{example}{Example}%
+\newtheorem{remark}{Remark}%
+
+\theoremstyle{thmstylethree}%
+\newtheorem{definition}{Definition}%
+
+\raggedbottom
+%%\unnumbered% uncomment this for unnumbered level heads
+
+\begin{document}
+
+\title[Article Title]{Morphological characterization and functional diversity of endophytic bacteria associated with potato (\textit{Solanum tuberosum} L.)}
+
+%%=============================================================%%
+%% Prefix	-> \pfx{Dr}
+%% GivenName	-> \fnm{Joergen W.}
+%% Particle	-> \spfx{van der} -> surname prefix
+%% FamilyName	-> \sur{Ploeg}
+%% Suffix	-> \sfx{IV}
+%% NatureName	-> \tanm{Poet Laureate} -> Title after name
+%% Degrees	-> \dgr{MSc, PhD}
+%% \author*[1,2]{\pfx{Dr} \fnm{Joergen W.} \spfx{van der} \sur{Ploeg} \sfx{IV} \tanm{Poet Laureate} 
+%%                 \dgr{MSc, PhD}}\email{iauthor@gmail.com}
+%%=============================================================%%
+
+\author*[1]{\fnm{Nazira S. Karamova} }\email{nskaramova@mail.ru}
+
+\author[1,2]{\fnm{Ammar A. Tuama} }\email{ammartuama02@gmail.com}
+
+
+\author[3]{\fnm{Emil Stasevski} }\email{ezstashevsky@edu.hse.ru}
+
+
+\author[4]{\fnm{Yaw Abayie Akosah} }\email{yaa2032@nyu.edu}
+\author[1]{\fnm{Olesya V. Ivankova} }\email{lesechka.ivankova@yandex.ru}
+\author[5]{\fnm{Zenon Stasevski} }\email{zenons@bk.ru}
+
+
+%\equalcont{These authors contributed equally to this work.}
+
+\affil*[1]{\orgdiv{Department of Microbiology, Institute of Fundamental  Medicine and Biology}, \orgname{Kazan (Volga Region) Federal 
+University}, \orgaddress{\street{Kremlevskaya str. 18}, \city{Kazan}, \postcode{420008}, \country{Russia}}}
+
+\affil[2]{\orgdiv{College of Basic Education}, \orgname{University of Diyala },  \city{Baquba}, \postcode{32001}, \country{Iraq}}}
+
+\affil[3]{\orgdiv{School of Politics and Governance}, \orgname{National Research University Higher School of Economics}, \orgaddress{\street{Myasnitskaya str. 20}, \city{Moscow}, \postcode{101000}, \country{Russia}}}
+
+\affil[4]{\orgdiv{Department of Molecular Pathobiology }, \orgname{New York University}, \orgaddress{\street{345 E 24th street}, \city{ Manhattan, NY}, \postcode{10010}, \state{USA}}}
+
+\affil[5]{\orgdiv{Department of Breeding and Biotechnology of Potatoes, Tatar Scientific Research Institute of Agriculture}, \orgname{Federal Research Center “Kazan Scientific Center of Russian Academy  of Sciences”}, \orgaddress{\street{Orenburgskiy trakt 48}, \city{Kazan}, \postcode{420046}, \country{Russia}}}
+
+
+
+
+
+\abstract{In this study, we investigated the biodiversity and functional role of endophytic microorganisms in potato plants. The data showed that the quantitative composition of endophytes varied among different potato varieties, with the Picasso cultivar having the highest number of endophytic bacteria. Factors such as plant tissue type, genotype, and environmental conditions influenced the colonization of plants by endophytes. The root system was found to be the primary location for endophytic bacteria, although some varieties showed endophytes in other plant organs, including tubers. The analysis of isolated endophytic bacteria revealed a predominance of Gram-positive bacteria. The majority of the isolates were found to produce indole-3-acetic acid (IAA), a phytohormone involved in various plant physiological processes. Additionally, some endophytic isolates exhibited antagonistic activity against the phytopathogenic fungus Rhizoctonia solani, highlighting their potential as biocontrol agents. The results obtained in the study provide insights into the diversity and functional properties of endophytic microorganisms in potato plants, with implications for plant health and productivity.}
+
+
+
+\keywords{ potato-associated endophytic bacteria, \textit{Solanum tuberosum} L., biological control, indole-3-acetic acid, \textit{Rhizoctonia solani}}
+
+
+\maketitle
+
+\section*{Introduction}\label{sec1}
+
+Plant life is intimately connected with and reliant on microorganisms. Over the past two decades, there has been significant interest in endophytic microorganisms, which colonize the internal tissues of plants without causing visible harm to their hosts (Hallmann et al.  1997; Schulz and Boyle 2006; Hardoim et al.  2015; White et al.  2019). The ability of endophytes to persist within plants for extended periods and transfer to subsequent generations through seeds suggests their beneficial impact on the host's health. Numerous scientific studies have been published on the unique properties of the endophytic microbiota. Endophytic microorganisms have been found to enhance plant nutrient uptake of phosphorus and nitrogen, regulate osmotic pressure and stomatal function, influence root system development, improve tolerance to abiotic stresses, and stimulate the production of siderophores, phytohormones, and vitamins (Santoyo et al. 2016; Kandel et al. 2017; Rana et al. 2020). Another important contribution of endophytes is their active role in providing natural protection through the production of diverse biologically active metabolites, which directly control phytopathogens and enhance plant immunity. Due to these advantageous properties, endophytes hold promise as potential candidates in biotechnology for the production of natural biocontrol agents for crop protection. Numerous endophytic bacteria and fungi showing beneficial effects on plant growth and development have been isolated from various plant species (Liu et al. 2017; Fadiji, Babalola 2020; Xavier et al. 2021; Lacava et al. 2022).
+Potato is a globally significant and extensively cultivated crop. It is grown in over 164 countries and consumed by approximately one billion people daily (Ekin 2019; FAOSTAT 2022). In addition to being a vital food source rich in vitamins, minerals, antioxidants, and essential amino acids, potato tubers serve as the primary raw material for starch production and various other potato-based products (Lutaladio et al. 2009; Reddy et al. 2018; Vilvert et al. 2022).
+Russia ranks as the fourth-largest potato producer globally, following China, India, and Ukraine (FAOSTAT, 2022; Soare and Chiurciu 2021). The average potato yield in Russia is around 14-16 metric tons per harvested hectare, while the potential productivity of potato plants can exceed 50 metric tons per hectare (FAOSTAT, 2022). Low seed quality and the prevalence of several potato phytopathogens are major contributors to low yields. Fungal and bacterial diseases lead to worldwide potato crop losses ranging from 20 to 50\% (Czajkowski et al. 2011; Oyesola et al. 2021). Potato tubers are susceptible to various microorganisms, including pathogenic bacteria and fungi. Moreover, the high water and nutritional content of tubers (around 70-75\%) create favorable conditions for phytopathogens growth (Abbas et al. 2013).
+In recent years, there have been several studies focusing on the microbiome diversity and biotechnological potential of endophytic microorganisms associated with potato plants. The primary goal of such investigations is to develop biopreparations that can enhance yield and reduce crop losses during storage. It has been observed that the majority of endophytic bacteria isolated from potato roots, stems, and tubers belong to the phyla \textit{Proteobacteria, Flexibacter/Cytophaga/Bacteroides}, and \textit{Planctomycetales} (Sessitsch et al. 2002). According to Liu et al.  (2020), prevalent bacteria in potato tubers include species from the genera \textit{Microbacterium, Brevibacterium, Rhodococcus, Bacillus, Lysinibacillus, Pseudomonas,} and \textit{Streptomyces}. Endophytes from the genera \textit{Rhizobium} and \textit{Sphingopyxis} are commonly found in potato stems, while members of the \textit{Delftia} and \textit{Ochrobactrum} genera primarily inhabit the roots (Shi et al. 2021). These endophytes are believed to play a significant role in protecting plants against \textit{Streptomyces scabiei}-related species. 
+Thus, the search for novel native endophytic bacterial strains with activity against various potato pathogens or the ability to promote plant growth remains an area of great interest for researchers. This opens up new possibilities for protecting crops from infections and maintaining balance in agrobiocenoses.
+The objective of this research was to characterize the morphological and functional diversity of endophytic bacteria isolated from different cultivars of seed potato plants. The data obtained are essential for assessing the potential use of these endophytic isolates in promoting plant growth and protecting potato plants.\\
+\section*{Materials and methods}
+\subsection*{Plant material}
+In this study, we used 5 cultivars of healthy potato plants grown from potato seeds obtained from different geographical zones: Reggi (Tatar Scientific Research Institute of Agriculture, Russia); Sprint (IJSSELMEER FOLDERS B.Y., Netherlands); Gala (Norika, Germany); Red Sonia (Europlant, Germany); Picasso (Agrico, Netherlands). Plants of the cultivar Reggi were grouped based on their sub-culture classifications: Reggi PBFG (Pre-basic field grown); Reggi S (Super-super elite); Reggi SE (Super elite), Reggi E (Еlite). The other four cultivars used were all plants of the Elite (E) sub-culture class. Plants (5 samples of each cultivar and class) were collected from the fields of the Tatar Scientific Research Institute of Agriculture, Kazan, Russia (latitude: 55°24′16″ N, longitude: 49°33′01″ E) in July, 2020 at the flowering stage. 
+All collected samples were transported into the laboratory under low-temperature conditions (4 ℃) and used within 48 h.
+\subsection*{Isolation of endophytic bacteria}
+Isolation of endophytic bacteria from the leaves, stems,tubers, and roots of plants was carried out using the protocol provided by Anjum, Chandra (Anjum, Chandra 2015). To eliminate the majority of epiphytic bacteria, small pieces (about 1-1.5 cm$^2$)  of tubers, stems, leaves, and plant roots  were rinsed in tap water and sequentially treated with 0.1\% Tween 20 (for a few seconds), 70\% ethanol (for 3 min), 5\% NaOCl solution (for 1 min), 70\% ethanol solution (for 2 min) and finally washed three times with sterile distilled water. The top layer of each part was removed with a sterile scalpel and small portions of the individual plant organs were then placed on 2\% sterile Luria-Bertani agar (LA) containing 60 $\mu$g/ml of nystatin to inhibit fungal growth.
+Plates were then incubated for 48 hours at a temperature of 30 °C. To guarantee the sterility of the plant pieces, 100 $\mu$l of distilled water used for the final wash of the samples, was plated on sterile LA media and incubated at 30°C. The dearth of microbial growth on the nutrient medium after 48 hours of incubation, indicates the absence of epiphytic microflora on the surface of plant fragments (Schulz et al. 1993). Each separate colony of endophytic bacteria was repeatedly transferred onto 2\% LA plates and cultured at 30°C for 24 hours, Visual inspection of individual colonies grown on nutrient media was performed along with Gram staining of bacterial cells to assess the purity of the bacterial culture. All bacterial cultures were stored in glycerin at -70°C.
+
+
+
+
+
+
+
+
+\subsection*{Morphological characterization of isolates}
+In accordance with the procedure outlined in the work of (Coico, 2001), colonies of pure cultures were characterized using the following features: color, size, form, surface, and appearance. Gram staining was performed on bacterial cells from each pure culture to assess their shape and color. The isolates were cultured in a nutrient medium at 30°C for 48 hours to evaluate their ability to form endospores. Subsequently, preparations were made and stained using the Shaeffer-Fulton technique (Oktari et al. 2017). The results of Gram staining and bacterial endospore staining with Shaeffer-Fulton were observed using oil immersion light microscopy (Micros MC 300 TXP, Austria).
+
+\subsection*{IAA production}
+The synthesis of indole-3-acetic acid (IAA) by endophytic isolates was assessed using the colorimetric method involving Salkovsky reagent (Gordon and Weber, 1951). Initially, the studied bacterial cultures obtained from the surface of 2\% LA were transferred into 5 ml of LB liquid nutrient medium and incubated at a temperature of 37°C for a duration of 3 days. Subsequently, the cells were collected by centrifugation at 8000 rpm for 5 minutes. To 1 ml of the supernatant, 4 ml of Salkovsky reagent (consisting of 2 ml of 0.5M FeCl$_3$ solution and 100 ml of 37\% HClO$_4$) were added. The resulting mixture was kept at room temperature for 20 minutes in the dark. The presence of indole-3-acetic acid was determined by the development of a pink color in the reaction mixture. The optical density of the mixture was measured at a wavelength of 530 nm using a spectrophotometer (Bio Rad, USA). LB-broth was employed as a control. The concentration of IAA produced by isolates was determined using standard curve of pure IAA ($y = 0.0147x + 0.1015)$, with an R-squared value of 0.9717).
+
+\subsection*{Screening of endophytic isolates' antagonistic activity}
+
+The antagonistic potential of the isolates was examined using a test culture of the phytopathogenic fungus \textit{Rhizoctonia solani} VKM F-895, which was obtained from the Institute of Biochemistry and Physiology of Microorganisms in Pushchino, Russia.
+The bacterial isolates were evenly spread on the surface of a nutrient medium, then incubated 24 hours at a temperature of 30°C. Similarly, test culture of the fungi was evenly spread on potato dextrose agar (PDA) and incubated at a temperature of 30°C for 7–14 days.
+Using a sterile cork drill with a diameter of 8 mm, blocks were carefully extracted from the lawn of the studied bacterial isolates and the test culture. These agar blocks, containing the isolates and the test culture, were placed on the surface of the PDA medium, ensuring a distance of 4–5 cm between each block. The plates without bacterial isolates were used as control. The plates were incubated at a temperature of 30°C for a period of 7 to 14 days. Each experiment was conducted in triplicate to ensure reliability and accuracy of the results.
+Antagonistic activity was evaluated by the formula:
+$$ AA,\% =  [(K-X)/K] x100 $$
+where\begin{itemize}
+    \item AA – percentage of antagonistic activity;
+    \item X – the diameter of the colony of the phytopathogenic fungus in the presence of the studied bacterial isolate (mm);
+    \item K (control) – the diameter of the colony of the fungus in the absence of the studied bacterial isolate (mm).
+\end{itemize}
+
+\subsection*{Statistical analysis}
+
+For statistical analysis of the experimental data, the single-factor ANOVA (analysis of variance) test was applied. The results of the analysis were presented as mean ± standard error. In order to determine if the observed differences among the means were statistically significant, a threshold of p < 0.05 was used. 
+For the partitioning of isolates based on different morphological characteristics matrix, IAA production, and antagonistic activity, hierarchical cluster analysis was performed using the Unweighted Average Linkage Clustering (UPGMA) algorithm. The clustering analysis utilized the Euclidean distance formula and k-means algorithms. The data analysis was conducted using R Core Team (2022) (URL https://www.R-project.org/). The results of the single-factor ANOVA (analysis of variance) confirmed that obtained mean values have statistically significant differences (having p-value lesser than conventional 0.05).
+To assess the quality of clusterization, appropriate visualizations and statistical tests were employed. Since the data did not follow a normal distribution, non-parametric tests were applied. Both the visualizations and statistical tests affirmed the presence of significant differences in means across various clusters. 
+
+
+
+
+\section*{Results}\label{sec2}
+
+
+\subsection*{Isolation and characterization of morphological properties of endophytic bacteria}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.06]{Fig1.tiff}
+    \caption{The distribution of endophytic bacteria isolates obtained from the roots, stems, leaves, and tubers of five cultivars of seed potato plants. The abbreviations used in the figure represent different classes of potato plants: PBFG (pre-basic field grown), S (super-super elite), SE (super elite), and E (elite). \label{F1}}
+\end{figure}
+
+
+
+In this study, a total of 49 cultured isolates of endophytic bacteria were obtained from different parts of potato plants (root, tuber, stem, leaves) of five varieties sourced from different geographical zones: Reggi (Tatar Agriculture Research Institute, Russia), Sprint (IJSSELMEER FOLDERS B.Y., Netherlands), Gala (Norika, Germany), Red Sonia (Europlant, Germany), and Picasso (Agrico, Netherlands). The Picasso variety yielded the highest number of endophytic bacteria isolates (10) among the different potato varieties (Figure ~\ref{F1}). Conversely, the Sprint variety yielded the lowest number of cultured endophytes (2).
+By focusing on the Reggi variety of potatoes, we demonstrated that plants of the same variety but from distinct classes exhibited varying compositions of endophytic microbiota. Furthermore, the initial years of seed potato reproduction showed the highest number of endophytic bacteria (7) ~\ref{F1}. Subsequently, the number of endophytic bacteria decreased in seed potato plants from later breeding periods, starting from class SE.
+
+
+
+
+
+Our investigation revealed that all examined potato plants contained the majority of endophytic bacteria in the roots, while the leaves harbored the least quantity of bacteria Figure~\ref{F1}. In the case of the Picasso variety, endophytes were relatively evenly distributed across different plant organs. Notably, isolates of endophytic bacteria were also obtained from tubers in the Gala, Red Sonia, and Picasso varieties. However, due to the early stage of tuber formation during the selected period of study, tubers exhibited limited development of the conducting system, thus hindering the accumulation of endophytes.
+In terms of morphological characteristics, the majority of isolates (81.6\%) formed opaque colonies with a circular shape (63.3\%), cream color (67.3\%), and a smooth (raised) surface (71.4\%). Regarding size, more than half of the isolates (51\%) displayed large colonies. Most of the isolates (82\%) exhibited a rod-shaped form, while only 18\% were cocci. The Gram staining showed 71\% of Gram-positive bacteria. Additionally, we determined that 61\% of the obtained isolates (30 out of 49) were capable of forming endospores (Table ~\ref{Table 1}).
+
+\begin{sidewaystable}[!htbp] \centering 
+  \caption{Morphological and functional properties of endophytic bacteria isolated from seed potato plants} 
+  \label{Table 1} 
+\begin{tabular}{@{\extracolsep{5pt}} ccccccccccc} 
+%\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+\thead{Isolates} & \thead{Color of \\colony} & \thead{Form  of \\colony} & \thead{Surface of \\colony} & \thead{ of \\colony} & \thead{Size  of \\colony} & \thead{Cell \\ shape} &\thead{ Endospore \\ formation} & \thead{Gram \\ reaction} & \thead{IAA production,\\ $\mu$g/ml} & \thead{Antagonistic  activity,\\ \% } \\
+%\hline \\[3pt] 
+\Xhline{1.5pt}  
+RPBFG R 10 & creamy & circular & smooth & opaque & large & rod & + & + ve & 2.1±0.1 & 0 \\ 
+RPBFG R 11 & creamy & circular & smooth & opaque & large & rod & + & + ve & 0 & 0 \\ 
+RPBFG R 12 & gray & irregular & smooth & opaque & large & rod & - & - ve & 0.7±0.05 & 0 \\ 
+RPBFG S 13 & creamy & circular & smooth & opaque & medium & cocci & - & + ve & 0.7±0.03 & 0 \\ 
+RPBFG S 14 & creamy & circular & wrinkled & opaque & large & rod & + & + ve & 0 & 14.2 \\ 
+RPBFG S 15 & creamy & circular & smooth & opaque & large & rod & + & + ve & 1.9±0.01 & 21.03 \\ 
+RPBFG L 16 & creamy & irregular & wrinkled & opaque & large & rod & + & + ve & 3.6±0.19 & 36.4 \\ 
+RS R 1 & white & circular & hairy & opaque & large & rod & + & + ve & 2.8±0.11 & 40.8 \\ 
+RS R 2 & creamy & rhizoid & wrinkled & opaque & large & rod & + & + ve & 0.1±0.01 & 0 \\ 
+RS R 3 & creamy & circular & smooth & translucent & medium & rod & \_ & - ve & 10.3±0.92 & 50.3 \\ 
+RS S 5 & creamy & circular & smooth & translucent & medium & rod & \_ & - ve & 1.9±0.02 & 0 \\ 
+RS S 6 & creamy & circular & smooth & opaque & medium & cocci & \_ & + ve & 0.9±0.07 & 0 \\ 
+RS S 7 & white & irregular & smooth & translucent & large & rod & + & + ve & 0 & 43.2 \\ 
+RS L 8 & white & irregular & smooth & opaque & large & rod & + & + ve & 0.5±0.01 & 0 \\ 
+RSE R 17 & creamy & circular & wrinkled & opaque & large & rod & + & + ve & 0.3±0.02 & 0 \\ 
+RSE R 18 & gray & irregular & smooth & opaque & medium & rod & - & - ve & 4.1±0.3 & 0 \\ 
+RSE S 19 & creamy & irregular & wrinkled & opaque & large & rod & + & + ve & 1.8±0.01 & 0 \\ 
+RSE S 20 & creamy & circular & wrinkled & opaque & large & rod & + & + ve & 3.6±0.32 & 0 \\ 
+RSE L 21 & white & circular & smooth & opaque & medium & rod & - & + ve & 1.5±0.09 & 0 \\ 
+RSE L 22 & white & circular & wrinkled & opaque & large & rod & + & + ve & 13.1±0.97 & 65.2 \\ 
+RE R 23 & creamy & circular & hairy & opaque & large & rod & + & + ve & 1.1±0.01 & 38.7 \\ 
+RE R 24 & creamy & rhizoid & wrinkled & opaque & small & rod & + & + ve & 1.5±0.12 & 0 \\ 
+RE S 25 & creamy & circular & smooth & opaque & medium & cocci & - & + ve & 1.8±0.17 & 0 \\ 
+RE L 28 & yellowish & irregular & smooth & opaque & medium & rod & + & + ve & 0 & 40.7 \\ 
+S R 134 & creamy & irregular & smooth & opaque & large & rod & - & - ve & 2.2±0.09 & 0 \\ 
+S L 129 & white & irregular & smooth & translucent & medium & rod & + & - ve & 3.7±0.28 & 0 \\ 
+G R 124 & creamy & circular & smooth & opaque & small & rod & + & + ve & 3.3±0.31 & 0 \\ 
+G R 125 & creamy & circular & smooth & opaque & medium & cocci & - & - ve & 0.2±0.01 & 0 \\ 
+G R 126 & creamy & irregular & smooth & opaque & large & cocci & - & - ve & 3.8±0.25 & 0 \\ 
+G T 119 & white & circular & smooth & opaque & large & rod & + & + ve & 2.3±0.21 & 45.3 \\ 
+G T 120 & creamy & rhizoid & wrinked & opaque & large & rod & + & + ve & 1.7±0.15 & 0 \\ 
+G S 127 & creamy & circular & smooth & translucent & medium & rod & - & - ve & 4.9±0.42 & 0 \\ 
+G S 128 & white & circular & smooth & translucent & medium & rod & - & - ve & 4.3±0.39 & 0 \\ 
+G L 121 & white & circular & smooth & opaque & large & rod & + & + ve & 0 & 0 \\ 
+RS R 115 & creamy & irregular & smooth & translucent & medium & rod & - & - ve & 5.4±0.45 & 43.5 \\ 
+RS R 116 & creamy & circular & smooth & opaque & medium & cocci & - & + ve & 2.3±0.19 & 0 \\ 
+RS T 111 & creamy & circular & smooth & opaque & large & rod & + & + ve & 3.7±0.25 & 42.8 \\ 
+RS T 112 & creamy & rhizoid & wrinkled & opaque & small & rod & + & + ve & 0.7±0.04 & 48.3 \\ 
+RS S 114 & creamy & irregular & smooth & translucent & medium & rod & - & - ve & 2.6±0.19 & 0 \\ 
+P R 101 & creamy & circular & smooth & opaque & medium & rod & + & + ve & 8.1±0.07 & 0 \\ 
+P R 102 & white & circular & smooth & opaque & small & cocci & - & - ve & 0 & 0 \\ 
+P R 109 & creamy & circular & wrinkled & opaque & large & rod & + & + ve & 0 & 42.5 \\ 
+P T 105 & creamy & circular & smooth & opaque & medium & cocci & - & + ve & 1.3±0.12 & 0 \\ 
+P T 106 & white & circular & smooth & opaque & medium & cocci & - & - ve & 0 & 0 \\ 
+P S 103 & white & circular & smooth & opaque & medium & rod & + & + ve & 0.9±0.05 & 0 \\ 
+P S 104 & creamy & circular & smooth & opaque & large & rod & + & + ve & 1.9±0.15 & 0 \\ 
+P L 107 & white & circular & smooth & translucent & medium & rod & + & + ve & 1.2±0.10 & 0 \\ 
+P L 113 & creamy & circular & smooth & opaque & large & rod & + & + ve & 2.3±0.21 & 37.7 \\ 
+P L 122 & creamy & rhizoid & wrinkled & opaque & large & rod & + & + ve & 11.0±0.97 & 0 \\ 
+\hline \\[-1.8ex] 
+\end{tabular} 
+Potato cultivars: R – Reggi, S – Sprint, G – Gala RS – Red Sonia, P – Picasso; Classes of potato: PBFG – Pre-basic field grown, S – Super-super elite, SE – Super elite, E – Elite; Organs of potato plants: R – Root, L –Leaf, S – Steam, T –Tuber. Positive reaction ( + ); Negative reaction (–); + ve – Gram positive and – ve – Gram negative.
+\end{sidewaystable} 
+
+
+
+
+\subsection*{IAA production}
+
+To assess the diversity of endophytic bacteria regarding their ability to synthesize indole-3-acetic acid, we examined the potential for IAA production in all the 49 bacterial isolates. The data presented in Table 1 indicate that a significant part of the isolates (83.7\%), were capable to produce IAA. The highest amounts of IAA were detected in the culture medium of isolates RSE L 22 (13.1 $\mu$g/ml), RS R 3 (10.3 $\mu$g/ml), and PL 122 (11 $\mu$g/ml). These isolates were derived from the leaves, roots of potato plants belonging to the Reggi variety (super elite and super-super elite classes), and leaves of the Picasso variety, respectively (Table ~\ref{Table 1}).
+
+
+
+
+
+
+\subsection*{Antagonistic potential of endophytic isolates}
+
+In this study, we investigated the antagonistic potential of 49 isolates of endophytic bacteria obtained from different organs of potato plants belonging to five varieties against the phytopathogenic strain\textit{ Rhizoctonia solani} VAR F-895. Among the tested isolates, 15 (30.6\%) demonstrated the ability to inhibit the growth of R. solani. The antagonistic activity of these isolates ranged from 14.2\% to 65.2\% (Table ~\ref{Table 1}).
+Notably, three isolates REL 22, RS 3, and RS T 112, exhibited substantial inhibition rates, suppressing the growth of \textit{R. solani} by 65.2\%, 50.3\%, and 48.3\%, respectively (Table ~\ref{Table 1}). These findings suggest that above mentioned isolates can be considered as promising candidates for biological control of diseases caused by \textit{R. solani}, one of the most prevalent potato pathogens.
+
+\subsection*{Cluster analysis of the morphological and functional characteristics of endophytic isolates}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.05]{Fig2.tiff}
+    \caption{A scatterplot depicting the results of k-means clusterization of endophytic bacteria isolates obtained from seed potato plants. The clusters are indicated by different colors, and boundary lines separate the clusters. Potato cultivars: R – Reggi, S – Sprint, G – Gala RS – Red Sonia, P – Picasso; Classes of potato: PBFG – Pre-basic field grown, S – Super-super elite, SE – Super elite, E – Elite; Organs of potato plants: R – Root, L –Leaf, S – Steam, T –Tuber. \label{F2}}
+\end{figure}
+
+
+
+The UPGMA algorithm was initially used to cluster the isolates, resulting in the formation of four clusters. However, the clusterization was imbalanced, with the second cluster containing only one observation and the third cluster encompassing nearly 90\% of the data. To achieve a more balanced and informative clustering, we subsequently applied the k-means algorithm. The k-means clustering algorithm effectively divided the 49 endophytic isolates into six distinct clusters (Figure~\ref{F2}).
+
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.03]{Fig3.tiff}
+    \caption{Boxplots depicting the distribution of IAA production (A) and antagonistic activity (B) among the six clusters of endophytic bacteria isolates. The bold line inside each box represents the median of the data, while the bottom of the box corresponds to the 0.25 quantile and the top represents the 0.75 quantile. \label{F3}}
+\end{figure}
+
+
+
+The effectiveness of the k-means clustering is supported by both visualization and statistical tests, which indicate the presence of statistically significant differences in means among the six clusters. The p-values obtained from the statistical tests are notably low, allowing us to reject the null hypothesis and conclude that the mean values of different clusters are not equal to each other. To further enhance the visualization of the k-means clustering results, we generated a boxplot graph (Figure ~\ref{F3}). The boxplot demonstrates that the medians, as well as the 0.25 and 0.75 quantiles, for IAA production differ across most clusters. Meanwhile for antagonistic activity, only the clusters 1, 2, and 3 exhibit values above zero, while the other clusters display antagonistic activity equal to zero (Figure ~\ref{F3}). Notably, cluster 2 comprises two isolates, RSE L 22 and RS R 3, characterized by the highest values for both IAA production and antagonistic activity. 
+ 
+Among the specific clusters, cluster 6 includes the largest number of isolates (26), but these isolates exhibit relatively low IAA production and antagonistic activity. Cluster 1 consists of 11 isolates, the majority of which are bacteria capable of forming endospores. Gram-positive bacteria predominantly make up clusters 1, 3, 5, and 6, while cluster 4 is primarily composed of Gram-negative bacteria.
+
+
+
+
+
+\section*{Discussion}
+
+Endophytic microorganisms occupy a unique ecological niche – the internal tissues of plants. Numerous studies have shown that endophytes maintain friendly relationships with their hosts and contribute to the improvement of plant vitality. Therefore, research aimed at assessing the biodiversity and functional role of endophytic microorganisms is highly relevant.
+In this study quantitative difference in composition of cultivated endophytes from seed potato plants of five varieties grown under the same environmental conditions has been observed. The majority of endophytic bacteria (10) were isolated from potato plants of the Picasso variety (Figure ~\ref{F1}). The smallest number of cultivated isolates of endophytes (2) were obtained from plants of the Sprint cultivar. The colonization of plants by endophytic microorganisms depends on many factors including the genotype of plant,  type of plant tissue, species and strains of the microorganisms, as well as other biotic and abiotic factors. Successful invasion of endophytes relies upon coordinated signaling systems for communication between plants and microorganisms, as well as within the population of endophytes (Gaiero et al. 2013). It is well known that plants of different species even growing in the same conditions exhibit variations in species composition and the number of endophytic microorganisms (Weber et al. 1999; Dong et al. 2003). Furthermore, genetic modifications resulting from breeding selection can lead to changes in the endophytic community among different varieties of the same plant species (Hardoim et al. 2011; Gaiero et al. 2013). Thus, research conducted by van Overbeek et al.  (2008) revealed differences in the composition of endophytic bacteria in potato plants (\textit{Solanum tuberosum} L.) of three varieties: Achirana Inta, Désirée, and Merkur.
+The results obtained from our investigation of the quantitative composition of potato plant endophytes of different classes in the Reggi variety are of particular interest. It was determined that the Pre-basic field-grown (PBFG) class of potato plants accumulated the highest number of endophytic bacteria. Meanwhile the number of endophytes in potato plants of a later reproductive stage was found decreased (Figure ~\ref{F1}). We can assume that the plant needs an additional defense during its early years of life which provide beneficial endophytic bacteria. Previously for the potato plants of several varieties (Achirana Inta, Désirée, and Merkur) a relationship between the age of plants and  the composition of their endophytic microorganisms has been demonstrated (van Overbeek et al. 2008). It is possible that  with age, the plants select the endophytes more carefully  favoring the most beneficial and harmonious microorganisms from the initial pool.
+Among the potato plants we investigated, the highest number of endophytic bacteria was primarily found in the root system. An exception was observed for the Picasso variety, where the number of endophytic isolates was almost equal in different plant organs. Endophytic bacteria were isolated from the tubers only three varieties (Gala, Red Sonia, Picasso) (Figure  ~\ref{F1}). The result obtained can be explained by the fact that the growth rates of the plant and the formation of tubers vary in different potato varieties. It is feasible that these potato varieties are characterized by a relatively rapid and effective development of the vascular system which explains the advanced spread of endophytes through diverse organs up to the tubers of plants.
+The quantitative distribution of endophytic bacteria among different organs of plants is consistent with the findings of other researchers (Gangwar, 2014; Zhang et al. 2019; Harman and Uphof, 2019; Shi et al. 2021). 
+Numerous bacterial endophytes are known to penetrate the plant from the rhizosphere. The pores at the regions where the lateral roots and root hairs branch out are the best spots for bacteria to enter the root system (Mercado-Blanco, Prieto, 2012; Philippot et al. 2013; Hardoim et al. 2015). The increasing amount of endophytic bacteria in plant roots is most probably caused by the fact that root cells actively secrete exudates that provide nutrients for microorganisms. This contributes to the formation of microbial-plant relationships outside and inside root tissues, making the root system the primary site of microbial penetration into the plant body (Oliveira et al. 2009; Paungfoo-Lonhienne et al. 2010). Consequently, the composition of root exudates of plants (carbohydrates, proteins, amino acids, secondary metabolites, etc.), has a decisive influence on the quantity and species composition of endophytic microorganisms (Upadhyay et al. 2022). Evidently root exudates contain compounds that initiate and control the early phases of endophytic bacteria's entry into the host body (Kandel et al. 2017). The colonization by endophytic bacteria\textit{ Burkholderia phytofirmans} PsJN of lupin, whose root exudates contain oxalates, was investigated by Kost et al. (Kost et al. 2014). It was found that the mutant strain, unable to utilize oxalates, was present in significantly smaller amounts in the interior tissues of lupin compared to the original strain \textit{Burkholderia phytofirmans} PsJN. Furthermore, the content of root exudates changes when plants interact with bacteria that can promote plant development and defend them from pathogens, as opposed to bacteria that have no evident beneficial properties (Miche et al. 2006; Rocha et al. 2007).
+Some microorganisms are capable to enter the plant through stomata, lesions on leaves and stems, stomas, and hydatodes, and in some cases, through the anthosphere and carposphere (Compant et al. 2011; Kandel et al. 2017). It is important to note that the bacteria's quorum sensing system plays crucial role in the colonization process (Hartmann et al. 2014). Mutant bacterial strains with impaired quorum sensing system have been observed to be unable to colonize plants successfully and stimulate their development (Zuniga et al. 2013). Several studies have found that adhesion factors, particularly exopolysaccharides and lytic enzymes produced by bacteria (Meneses et al. 2011; Naveed et al. 2014) as well as chemotaxis and biofilm formation systems, flagella, fimbriae, and lipopolysaccharides of the cell wall (Balsanelli et al. 2010; 2013) improve the penetration of endophytes into plants.
+Endophytes are primarily located in the intercellular space of the plant, which contains a high concentration of carbohydrates, amino acids, and etc. However, they can also be found inside host cells. Endophytic bacteria produce various lytic enzymes, including cellulase, pectinase, endoglucanase, and xylanase, to spread from the site of penetration into adjacent plant tissues (Hardoim et al. 2015). The xylem vascular system serves as the primary pathway for bacterial colonization of internal plant tissues. Bacterial endophytes move through perforated plates with pores large enough for bacterial cells to pass through and reach the xylem (Compant et al. 2011; Chu, Bae, 2022).
+Previous studies have demonstrated that some endophytes show selectivity towards specific plant tissues and organs. For example, it has been found that Pseudomonas spp. prefer to inhabit the stems of potato plants rather than the roots (Garbeva et al. 2001). However, it is still unclear whether endophytes colonize specific organs and plant tissues by chance or if each species must occupy a specific niche to fulfill its functions in the host organism (Hardoim et al. 2015). Thus, the mechanisms of endophyte dispersal in different ecological niches within the plant organism remain unknown. This presents an intriguing challenge for future investigations, which will help us understand new aspects of microbial-plant relationships.
+The morphological characteristics of the isolated endophytic isolates were analyzed providing us with initial data on the diversity of the endophytic microbiota of the examined potato plants.\\
+The analysis of the obtained data revealed that the dominant species among the cultured endophytes are bacteria that form opaque, circular-shaped colonies with a smooth surface and creamy color. The prevailing cell shape is rod-shaped. It should be emphasized that the majority of the isolated strains belong to Gram-positive bacteria and have the ability to form endospores (Table 1~\ref{Table 1}).
+
+Other studies also have demonstrated the prevalence of Gram-positive bacteria in the plant endosphere. It is known that many of Gram-positive bacteria can synthesize unique metabolites that can stimulate plant growth, protect their hosts from abiotic stress factors, control pathogenic microorganisms (Ryan et al. 2008; Narula et al. 2013; Ek-Ramos et al. 2019; Bashir et al. 2020). Endophytic Gram-positive bacteria belonging to the genera \textit{Bacillus} and \textit{Streptomyces} are well-known for their production of physiologically active compounds (Reinhold-Hurek et al. 2011; Frank et al. 2017). It can also be hypothesized that bacteria capable of producing endospores are likely to have more opportunities for life within the host's endosphere and to maintain viability across multiple generations of the same plant.
+Endophytic microorganisms residing in various plants possess the ability to synthesize IAA which is considered one of the most significant phytohormones. IAA plays a crucial role in regulating the relationship between endophytes and their host plants as well as in protecting plants from biotic and abiotic stresses (Santoyo et al. 2016; Bhutani et al. 2018; Xavier et al. 2021). IAA is involved in numerous physiological processes of plants. It facilitates cellular signal transmission, regulates plant development, and induces defense mechanisms. Additionally, IAA contributes to the formation of lateral and adventitious roots, influences responses to stimuli, affects photosynthesis and metabolite biosynthesis, and enhances resilience to stressful conditions (Zhao et al. 2010; Kasahara, 2016; Casanova-Sáez et al. 2021).
+The results of our study regarding the ability of the majority of potato endophytic isolates (83.7\%) to produce IAA confirm the involvement of these bacteria in key physiological processes of their hosts and highlight the significance of IAA as a "molecule of communication" between endophytes and plants. Among the investigated endophytic bacteria, the highest level of IAA production demonstrated isolates RSE L 22 (13.1 $\mu$ g/mL) and RS R 3 (10.3 $\mu$ g/mL), obtained from Reggi potato cultivars of the super-elite and super-super elite classes, respectively (Table 1, ~\ref{Figure 3}).
+
+Previous studies have demonstrated the ability of potato endophytic bacteria to synthesize indole-3-acetic acid. For example, the endophytic strain \textit{Methylobacterium} sp. 2AB from the roots of \textit{Solanum tuberosum} L. cv. Desiree plants was found to produce IAA. Moreover, the presence of \textit{Methylobacterium} sp. 2AB in potato correlated with the intensive development of root hairs indicating the role of IAA synthesis in plant growth (Grossi et al. 2020). Similarly, Kumar et al.  (Kumar et al.  2018) obtained that endophytic isolates from the phyllosphere of \textit{Solanum tuberosum} L. var. Kufri bahar stimulated plant growth through IAA synthesis. Inoculation of potato plants with endophytic strains such as \textit{Burkholderia phytofirmans} PsJN and \textit{Bacillus subtilis} 26D also resulted in increased IAA production in the experimental plants (Kurepin et al. 2014; Sorokan et al. 2021).
+
+Infectious diseases caused by fungal pathogens pose a significant threat to crop productivity, particularly affecting potato yield. Phytopathogenic fungi can contaminate plant leaves and stems leading to vascular obstruction and impaired tuber maturation resulting in reduced yields. Fungal pathogens, such as \textit{Rhizoctonia solani}, can cause diseases like black scuff, tuber necrosis, rotting of buds and sprouts, stolon, and root death, as well as stem decay (Bains et al. 2002; Abbas et al. 2013). These diseases contribute to substantial crop losses and affect potato quality during storage.
+The use of endophytic bacteria as biocontrol agents against phytopathogens has the potential to significantly reduce potato crop losses and decrease reliance on chemical plant protection products (Falade et al. 2021; Xavier et al. 2021).
+We have demonstrated that 15 out of the 49 investigated potato endophytic isolates possess antagonistic potential against the phytopathogenic strain \textit{Rhizoctonia solani} VKM F-895. The most pronounced effect was observed for isolates RSE L 22 (65.2\%), RS R 3 (50.3\%), and RS T 112 (48.3\%) (Table 1, Figure 3). Our results are consistent with the findings of other researchers who have also shown the antagonistic activity of potato endophytic microorganisms against various phytopathogens. In a study by Berg et al.  (Berg et al.  2005), it was observed that endophytes isolated from the endorhiza of potato cv. Cilena exhibited fungicidal effect against  \textit{Verticillium dahliae} and \textit{Rhizoctonia solani}. The predominant groups of antagonistic bacteria identified were \textit{Bacillus}, \textit{Agrobacterium, Erwinia, Staphylococcus, Serratia}, and \textit{Pseudomonas}. Among these, \textit{Serratia plymuthica} 3Re4-18, isolated from the root endosphere, displayed the highest fungicidal activity. Furthermore, other researchers have also demonstrated the antagonistic activity of potato endophytic microorganisms against various phytopathogens. For instance, Pageni et al.  (Pageni et al.  2014), Rado et al.  (Rado et al.  2015), and Liu et al.  (Liu et al. 2020) reported the antagonistic effects of potato endophytes against \textit{Pectobacterium atrosepticum, Fusarium sambucinum, Clavibacter michiganensis} subsp. \textit{sepedonicus}, \textit{Ralstonia solanacearum, Streptomyces scabies, Erwinia carotovora}, and \textit{Phytophthora infestans}. These findings highlight the potential of endophytic microorganisms in providing biocontrol against a range of potato phytopathogens.
+The use of cluster analysis methods (hierarchical cluster analysis by UPGMA and k-means clustering) of morphological and functional properties of 49 endophytic isolates, obtained from different organs of five varieties of seed potatoes, allowed for a clear demonstration of the diversity of endophytic bacteria in different potato varieties (Figures 2, 3). Moreover, it was reliably established that the most interesting cluster is Cluster 2, which includes promising isolates with the highest production values of the phytohormone IAA and antagonistic activity against the potato pathogen \textit{Rhizoctonia solani}.
+
+\section*{Conclusion}
+
+Based on the study's findings, it can be inferred that the isolates RSE L 22 and R 3 obtained from the leaves and roots of Reggi seed potato plants, classified as Super Elite and Super-super Elite, exhibit potential as growth-promoting endophytic bacteria. However, further research is needed to explore the specific characteristics of these endophytic isolates and assess their effectiveness in promoting potato plant growth in greenhouse and field conditions.\\
+
+
+\textbf{Author contribution} Nazira S. Karamova and Zenon Stasevski designed and supervised the research. Ammar A. Adnan, Olesya V. Ivankova carried out the experiments and analyzed the data. Ammar A. Adnan, Zenon Stasevski analyzed of literature data. Emil Stasevski performed statistical analysis of experimental data and prepared the figures. Nazira S. Karamova, Zenon Stasevski, Yaw Abayie Akosah wrote the manuscript. Olesya V. Ivankova, Emil Stasevski and Yaw Abayie Akosah revised the manuscript. All authors approved the final submitted manuscript.\\
+
+\textbf{Data availability} All datasets generated for this study have been included in the article.\\
+
+\textbf{Funding} This study was supported by the RSF grant (Russian Science Foundation) №22-16-00138 (isolation and morphological characteristics of endophytic bacteria, screening of endophytic isolates' IAA production ability and antagonistic activity);  the grant from the Basic Scientific Research Project of the Ministry of Science and Higher Education of the Russian Federation for TatSRIA – Subdivision of FIC KazanSC of RAS (growing the potato plants in the field, collection the plant material).\\
+
+\textbf{Acknowledgments} The study was carried out thanks to the technical resources of the Strategic Academic Leadership Program of the Kazan Federal University (PRIORITET-2030).\\
+
+\textbf{Declarations } Conflict of interest The authors declare no competing interests.
+
+
+
+\subsection*{References}
+Abbas M.F., Irshad G, Naz MFAF (2013). Important fungal diseases of potato and their management – a brief review. Mycopath, 11:45–50 
+
+Anjum N, Chandra R (2015) Endophytic bacteria: optimization of isolation procedure from various medicinal plants and their preliminary characterization. Asian J Pharm Clin Res 8:233–238
+
+Bains PS, Bennypaul HS, Lynch DR, Kawchuk LM, Schaupmeyer CA (2002) Rhizoctonia disease of potatoes (Rhizoctonia solani): Fungicidal efficacy and cultivar susceptibility. Am J Potato Res 79:99–106. \url{http://dx.doi.org/10.1007%2FBF02881518    }
+
+Balsanelli E, Serrato RV, de Baura VA, Sassaki G, Yates MG, et al (2010) Herbaspirillum seropedicae rfbB and rfbC genes are required for maize colonization. Environ Microbiol 12: 2233–2244. \url{https://doi.org/10.1111/j.1462-2920.2010.02187.x}
+
+Balsanelli E, Tuleski TR, Baura VA, Yates MG, Chubatsu LS, Pedrosa FO, et al (2013) Maize root lectins mediate the interaction with Herbaspirillum seropedicae via N-acetyl glucosamine residues of lipopolysaccharides. PLoS ONE 8:e77001. \url{https://doi.org/10.1371/journal.pone.0077001}
+
+Bashir S, Iqbal A, Hasnain S (2020) Comparative analysis of endophytic bacterial diversity between two varieties of sunflower Helianthus annuus with their PGP evaluation. Saudi J Biol Sci 27:720–726.  \url{https://doi.org/10.1016/j.sjbs.2019.12.010}
+
+Berg G, Krechel A, Ditz M, Sikora RA, Ulrich A, Hallmann J (2005) Endophytic and ectophytic potato-associated bacterial communities differ in structure and antagonistic function against plant pathogenic fungi. FEMS Microbiol Ecol 51:215–229. \url{https://doi.org/10.1016/j.femsec.2004.08.006}
+
+Bhutani N, Maheshwari R, Negi M, Suneja P (2018) Optimization of IAA production by endophytic Bacillus spp. from Vigna radiata for their potential use as plant growth promoters. Isr J Plant Sci 65: 83–96. \url{http://dx.doi.org/10.1163/22238980-00001025}
+
+Casanova-Sáez R, Mateo-Bonmatí E, Ljung K (2021) Auxin metabolism in plants. Cold Spring Harb Perspect Biol 13:a039867. https://doi.org/10.1101/cshperspect.a039867
+
+Chu LL, Bae H (2022) Bacterial endophytes from ginseng and their biotechnological application. J Ginseng Res 46:1–10. \url{https://doi.org/10.1016/j.jgr.2021.04.004}
+
+Coico R. (2001) Gram staining. Current Protocols in Immunology Appendix 3:A.3O.1–A.3O.2. \url{https://doi.org/10.1002/0471142735.ima03os23}
+
+Compant S, Clément C, Sessitsch A (2010) Plant growth-promoting bacteria in the rhizo- and endosphere of plants: Their role, colonization, mechanisms involved and prospects for utilization. Soil Biol Biochem  42:669–678. 
+\url{https://doi/org/10.1016/j.soil-bio.2009.11.024}
+
+Compant S, Mitter B, Colli-Mull JG, Gangl H Sessitsch A (2011) Endophytes of grapevine flowers, berries, and seeds: identification of cultivable bacteria, comparison with other plant parts, and visualization of niches of colonization. Microb Ecol 62:188–197. \url{http://dx.doi.org/10.1007%2Fs00248-011-9883-y}
+
+Czajkowski R, Perombelon MC, van Veen JA, Van der Wolf JM (2011) Control of blackleg and tuber soft rot of potato caused by Pectobacterium and Dickeya species: a review. Plant Pathol 60:999–1013. \url{https://doi.org/10.1111/j.1365-3059.2011.02470.x}
+
+Dong Y, Iniguez AL, Triplett EW (2003) Quantitative assessments of the host range and strain specificity of endophytic colonization by Klebsiella pneumoniae 342. Plant Soil 257:49–59. \url{https://doi.org/10.1023/A:1026242814060}
+
+Ekin Z (2019) Integrated use of humic acid and plant growth promoting rhizobacteria to ensure higher potato productivity in sustainable agriculture. Sustainability 11:3417. \url{https://doi.org/10.3390/su11123417}
+
+Ek-Ramos MJ, Gomez-Flores R, Orozco-Flores AA, Rodríguez-Padilla C, González-Ochoa G, Tamez-Guerra P (2019) Bioactive products from plant-endophytic Gram-positive bacteria. Front Microbiol 10:463. \url{https://doi.org/10.3389/fmicb.2019.00463}
+
+Fadiji AE, Babalola OO (2020) Elucidating mechanisms of endophytes used in plant protection and other bioactivities with multifunctional prospects. Front Bioeng Biotechnol 8: 467–487. \url{https://doi.org/10.3389/fbioe.2020.00467}
+
+Falade AO, Adewole KE, Ekundayo TC (2021) Aptitude of endophytic microbes for production of novel biocontrol agents and industrial enzymes towards agro-industrial sustainability. Beni Suef Univ J Basic Appl Sci 10:1–14. \url{https://doi.org/10.1186/s43088-021-00146-3}
+
+FAOSTAT (2022) World Food and Agriculture – Statistical Yearbook 2022. Rome. \url{https://doi.org/10.4060/cc2211en}. Accessed 10 October 2022
+
+Frank AC, Saldierna Guzmán JP, Shay JE (2017) Transmission of bacterial endophytes. Microorganisms 5:70. \url{https://doi.org/10.3390/microorganisms5040070}
+
+Gaiero JR, McCallC A, Thompson KA, Day N J, Best AS, Dunfield KE (2013) Inside the root microbiome: bacterial root endophytes and plant growth promotion. Am J Bot 100:1738–1750. \url{https://doi.org/10.3732/ajb.1200572}
+
+Gangwar M, Dogra S, Gupta UP, Kharwar RN (2014)   Diversity and biopotential of endophytic actinomycetes from three medicinal plants in India. Afr J Microbiol Res 8:184–191. \url{https://doi.org/10.5897/AJMR2012.2452}
+
+Garbeva P, Van Overbeek LS, Van Vuurde JWL, Van Elsas JD (2001) Analysis of endophytic bacterial communities of potato by plating and denaturing gradient gel electrophoresis (DGGE) of 16S rDNA based PCR fragments. Microb Ecol 41:369–383. \url{https://doi.org/10.1007/s002480000096}
+
+Gordon SA, Weber RP (1951) Colorimetric estimation of indoleacetic acid. Plant Physiol 26:192–195. \url{https://doi.org/10.1104%2Fpp.26.1.192}
+
+Grossi CEM, Fantino E, Serral F, Zawoznik MS, Fernandez Do Porto DA, Ulloa RM (2020) Methylobacterium sp. 2A is a plant growth-promoting rhizobacteria that has the potential to improve potato crop yield under adverse conditions. Front Plant Sci 11:71. \url{https://doi.org/10.3389/fpls.2020.00071}
+
+Hallmann J, Quadt-Hallmann  A, Mahaffee WF, Kloepper J (1997) Bacterial endophytes in agricultural crops. Can J Microbiol 43: 895–914. \url{https://doi.org/10.1139/m97-131}
+
+Harman GE. and Uphoff N (2019) Symbiotic Root-Endophytic Soil Microbes Improve Crop Productivity and Provide Environmental Benefits.  Scientifica (Cairo).  \url{https://doi.org/10.1155/2019/9106395}
+
+Hardoim PR , van Overbeek LS,  Berg G et al (2015) The hidden world within plants: ecological and evolutionary considerations for defining functioning of microbial endophytes. Microbiol Mol Biol Rev 79: 293–320. \url{https://doi.org/10.1128/MMBR.00050-14}
+
+Hardoim PR, Andreote FD, Reinhold-Hurek B, Sessitsch A, van Overbeek LS, van Elsas JD (2011) Rice root-associated bacteria: insights into community structures across 10 cultivars. FEMS Microbiol Ecol 77:154–164. \url{https://doi.org/10.1111/j.1574-6941.2011.01092.x}
+
+Hartmann A, Rothballer M, Hense BA, Schröder P (2014) Bacterial quorum sensing compounds are important modulators of microbe-plant interactions. Front Plant Sci 5:131.\url{ https://doi.org/10.3389/fpls.2014.00131}
+
+Kandel SL, Joubert PM, Doty SL (2017) Bacterial endophyte colonization and distribution within plants. Microorganisms 5:77. https://doi.org/10.3390/microorganisms5040077
+
+Kasahara H (2016) Current aspects of auxin biosynthesis in plants. Biosci Biotechnol Biochem 80: 34–42. \url{https://doi.org/10.1080/09168451.2015.1086259}
+
+Kost, T, Stopnisek N, Agnoli K, Eberl L, Weisskopf L (2014) Oxalotrophy, a widespread trait of plant-associated Burkholderia species, is involved in successful root colonization of lupin and maize by Burkholderia phytofirmans. Front Microbiol 4:421. \url{https://doi.org/10.3389/fmicb.2013.00421}
+
+Kumar S, Chaudhary D, Rashmi, Jangra R, Kumari A, Kumar R (2018) Exploring phyllosphere bacteria for growth promotion and yield of potato (Solanum tuberosum L.). Int J Curr Microbiol Appl Sci 7: 1065–1071. https://doi.org/10.20546/ijcmas.2018.704.117
+
+Kurepin LV, Park JM, Lazarovits G, Bernards MA (2014) Burkholderia phytofirmans-induced shoot and root growth promotion is associated with endogenous changes in plant growth hormone levels. Plant Growth Regul 75:199–207. \url{https://doi.org/10.1007/s10725-014-9944-6}
+
+Lacava PT, Bogas AC, Cruz FdPN (2022) Plant Growth Promotion and Biocontrol by Endophytic and Rhizospheric Microorganisms From the Tropics: A Review and Perspectives. Front Sustain Food Syst 6:796113. \url{https://doi.org/10.3389/fsufs.2022.796113}
+
+Liu H, Carvalhais LC, Crawford M et al (2017) Inner Plant values: diversity, colonization and benefits from endophytic bacteria. Front Microbiol 8:2552. \url{https://doi.org/10.3389/fmicb.2017.02552}
+
+Liu JM, Wang SS, Zheng X et al (2020) Antimicrobial activity against phytopathogens and inhibitory activity on solanine in potatoes of the endophytic bacteria isolated from potato tubers. Front Microbiol 11:570926. \url{https://doi.org/10.3389/fmicb.2020.570926}
+
+Lutaladio N, Castaldi L (2009) Potato: The hidden treasure. J Food Compost Anal 22:491–493. \url{https://doi.org/10.1016/j.jfca.2009.05.002}
+
+Meneses CH, Rouws LF, Simões-Araújo JL, Vidal MS Baldani JI (2011) Exopolysaccharide production is required for biofilm formation and plant colonization by the nitrogen-fixing endophyte Gluconacetobacter diazotrophicus. Mol Plant Microbe Interact 24:1448–1458. \url{https://doi.org/10.1094/MPMI-05-11-0127}
+
+Mercado-Blanco J, Prieto P (2012) Bacterial endophytes and root hairs. Plant Soil 361:301–306. \url{http://dx.doi.org/10.1007%2Fs11104-012-1212-9}
+
+Miché L, Battistoni F, Gemmer S, Belghazi M, Reinhold-Hurek B. (2006) Upregulation of jasmonate-inducible defense proteins and differential colonization of roots of Oryza sativa cultivars with the endophyte Azoarcus sp. Mol Plant Microbe Interact 19:502–511. \url{https://doi.org/10.1094/MPMI-19-0502}
+
+Narula S, Anand RC, Dudeja SS, Pathak DV (2013) Molecular diversity of root and nodule endophytic bacteria from field pea (Pisum sativum L.). Leg Res 36: 344–350.
+
+Naveed M, Mitter B, Yousaf S, Pastar M, Afzal M, Sessitsch A (2014) The endophyte Enterobacter sp. FD17: a maize growth enhancer selected based on rigorous testing of plant beneficial traits and colonization characteristics. Biol Fertil Soils 50:249–262. \url{https://doi.org/10.1007/s00374-013-0854-y}
+
+Oktari A, Supriatin Y, Kamal M, Syafrullah H (2017) The bacterial endospore stain on schaeffer fulton using variation of methylene blue solution. J Phys Conf Ser 812:012066. \url{https://doi.org/10.1088/1742-6596/812/1/012066}
+
+Oliveira ALM, Stoffels M, Schmid M, Reis VM, Baldani JI, Hartmann A (2009) Colonization of sugarcane plantlets by mixed inoculations with diazotrophic bacteria. Eur J Soil Biol 45:106–113. \url{https://doi.org/10.1016/j.ejsobi.2008.09.004}
+
+Oyesola OL, Aworunse OS, Oniha MI, Obiazikwor OH, Bello O, Atolagbe OM, Obembe OO (2021) Impact and Management of Diseases of Solanum tuberosum. In: (ed) Yildiz M and Ozgen Y Solanum tuberosum – A Promising Crop for Starvation Problem, IntechOpen. \url{https://doi:10.5772/intechopen.98899}
+
+Pageni BB, Lupwayi NZ, Akter Z, Larney FJ, Kawchuk LM, Gan Y (2014) Plant growth-promoting and phytopathogen-antagonistic properties of bacterial endophytes from potato (Solanum tuberosum L.) cropping systems. Can J Plant Sci 94: 835–844. \url{https://doi.org/10.4141/cjps2013-356}
+
+Paungfoo-Lonhienne C, Rentsch D, Robatzek S et al (2010) Turning the table: plants consume microbes as a source of nutrients. PLoS One 5:e11915. \url{https://doi.org/10.1371/journal.pone.0011915}
+
+Philippot L, Raaijmakers JM, Lemanceau P, Van Der Putten WH (2013) Going back to the roots: the microbial ecology of the rhizosphere. Nat Rev Microbiol 11:789–799. \url{https://dx.doi.org/10.1038/nrmicro3109}
+
+Rado R, Andrianarisoa B, Ravelomanantsoa S et al (2015) Biocontrol of potato wilt by selective rhizospheric and endophytic bacteria associated with potato plant. Afr J Food Agric Nutr Dev 15:9762–9776. \url{https://doi.org/10.18697/ajfand.68.15005}
+
+Rana KL, Kour D, Kaur T, Devi R, Yadav AN, Yadav N, Dhaliwal HS, Saxena AK (2020) Endophytic microbes: biodiversity, plant growth-promoting mechanisms and potential applications for agricultural sustainability. Antonie Van Leeuwenhoek 113:1075–1107.\url{ https://doi.org/10.1007/s10482-020-01429-y}
+
+Reddy BJ, Mandal R, Chakroborty M, Hijam L, Dutta P (2018) A review on potato (Solanum tuberosum L.) and its genetic diversity. Int J Genet 10:360–364. \url{http://dx.doi.org/10.9735/0975-2862.10.2.360-364}
+
+Reinhold-Hurek B, Hurek T (2011) Living inside plants: bacterial endophytes. Curr Opin Plant Biol 14:435–443. \url{https://doi.org/10.1016/j.pbi.2011.04.004}
+
+Rocha FR, Papini-Terzi FS, Nishiyama MY et al (2007) Signal transduction-related responses to phytohormones and environmental challenges in sugarcane. BMC Genomics 8:1–22. \url{http://doi.org/10.1186/1471-2164-8-71}
+
+Ryan RP, Germaine K, Franks A, Ryan DJ, Dowling DN (2008) Bacterial endophytes: recent developments and applications. FEMS Microbiol Lett 278: 1–9. \url{https://doi.org/10.1111/j.1574-6968.2007.00918.x}
+
+Santoyo G, Moreno-Hagelsieb G, del Orozco-Mosqueda M, et al (2016) Plant growth-promoting bacterial endophytes. Microbiol Res 183: 92–99. \url{https://doi.org/10.1016/j.micres.2015.11.008}
+
+Sessitsch A, Reiter B, Pfeifer U, Wilhelm E. (2002) Cultivation-independent population analysis of bacterial endophytes in three potato varieties based on eubacterial and Actinomycetes-specific PCR of 16S rRNA genes. FEMS Microbiol Ecol 39: 23–32. \url{https://doi.org/10.1111/j.1574-6941.2002.tb00903.x}
+
+Schulz B, Wanke U, Draeger S, Aust HJ (1993) Endophytes from herbaceous plants and shrubs: effectiveness of surface sterilization methods. Mycol Res 97:1447–1450. \url{https://doi.org/10.1016/S0953-7562(09)80215-3}
+
+Schulz B, Boyle C (2006) What are endophytes? In: Schulz B, Boyle C, Sieber TN (eds) Microbial Root Endophytes. Soil Biology 9. Springer, Berlin, Heidelberg. \url{https://doi.org/10.1007/3-540-33526-9_1}
+
+Shi W, Su G, Li M, Wang B, Lin R, Yang Y, Wei T, Zhou B, Gao Z (2021) Distribution of bacterial endophytes in the non-lesion tissues of potato and their response to potato common scab. Front Microbiol 12:616013. \url{https://doi.org/10.3389/fmicb.2021.616013}
+
+Soare E, Chiurciu IA (2021) Study on the dynamics of potato production and worldwide trading during the period 2012-2019. Scientific Papers Series Management, Economic Engineering in Agriculture and Rural Development 21:527–532.
+
+Sorokan A, Veselova S, Benkovskaya G, Maksimov I (2021) Endophytic strain Bacillus subtilis 26D increases levels of phytohormones and repairs growth of potato plants after Colorado potato beetle damage. Plants 10:923. \url{https://doi.org/10.3390/plants10050923}
+
+The R Project for Statistical Computing. \url{https://www.r-project.org/}. Accessed 14 November 2022
+
+Upadhyay SK, Srivastava AK, Rajput VD et al (2022) Root Exudates: mechanistic insight of plant growth promoting rhizobacteria for sustainable crop production. Front Microbiol 13:916488. \url{https://doi.org/10.3389%2Ffmicb.2022.916488}
+
+van Overbeek L, van Elsas JD (2008) Effects of plant genotype and growth stage on the structure of bacterial communities associated with potato (Solanum tuberosum L.) FEMS Microbiol Ecol 64:283–296. \url{https://doi.org/10.1111/j.1574-6941.2008.00469.x}
+
+Vilvert E, Stridh L, Andersson B, Olson A, Aldén L, Berlin A (2022) Evidence based disease control methods in potato production: a systematic map protocol. Environ Evid 11:6 \url{https://doi.org/10.1186/s13750-022-00259-x}
+
+Weber OB, Baldani VLD, Teixeira KDS, Kirchhof G, Baldani JI, Dobereiner J (1999) Isolation and characterization of diazotrophic bacteria from banana and pineapple plants. Plant Soil 210:103–113. \url{https://doi.org/10.1023/A%3A1004623523179}
+
+White JF, Kingsley KL , Zhang Q et al (2019) endophytic microbes and their potential applications in crop management. Pest Manag Sci 75: 2558–2565. \url{https://doi.org/10.1002/ps.5527}
+
+Xavier ML, Bosch AR, Karp SG, Soccol CR (2021) Endophytic bacteria: a possible path towards a sustainable agriculture. Biotechnology Research and Innovation 5: e2021008. \url{http://dx.doi.org/10.4322/biori.2105020}
+
+Zhang Q, Jacquelinne J, Acuna JA, et al (2019) Endophytic bacterial communities associated with roots and leaves of plants growing in chilean extreme environments. Scientific Reports 9:4950 \url{https://doi.org/10.1038/s41598-019-41160-x}
+
+Zhao Y (2010) Auxin biosynthesis and its role in plant development. Annu Rev Plant Biol 61: 49–64. \url{https://doi.org/10.1146/annurev-arplant-042809-112308}
+
+Zúñiga A, Poupin MJ, Donoso R, Ledger T, Guiliani N, Gutiérrez RA, González B (2013) Quorum sensing and indole-3-acetic acid degradation play a role in colonization and plant growth promotion of Arabidopsis thaliana by Burkholderia phytofirmans PsJN. Mol Plant Microbe Interact 26:546–553. \url{https://doi.org/10.1094/MPMI-10-12-0}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

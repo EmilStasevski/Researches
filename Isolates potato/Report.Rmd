@@ -1,0 +1,540 @@
+---
+title: "Report"
+author: "Emil Staszewsky"
+output:
+  html_document:
+    code_folding: hide
+  pdf_document: default
+---
+```{r  , include=FALSE}
+knitr::opts_chunk$set(echo = T)
+```
+
+
+У нас есть 49 изолятов эндофитных бактерий, которые мы выделили из разных частей (корни, листья, стебли, клубни) растений семенного картофеля 5 разных сортов. Эндофитные бактерии — это бактерии, живущие во внутренних тканях растений, и считается, что они приносят пользу растениям, улучшают их жизнедеятельность разными способами: стимулируют их рост, продуцируя фитогормоны (например IAA (indole-3- acetic acid)  или обладают антагонистической активностью в отношении фитопатогенных  микроорганизмов, т.е. борются с ними, не допуская их развитие в растениях, предотвращая заболевания).
+Мы провели скрининговое исследование, чтобы выявить наиболее перспективные изоляты для дальнейшей работы с ними и в конце концов создания на них основе биопрепаратов.
+Итак, было изучено биоразнообразие изолятов  (49)по морфологическим и функциональным признакам.
+Морфологические: Colony morphology, Endospоre formation, Gram stain, Cell shape).
+Функциональные: (IAA production, Antagonostoc activity)/
+
+
+### **цель выделить лучшую группу по показателям Antagonistic activity и IAA production **
+
+
+
+
+
+```{r,  message=FALSE,warning=FALSE}
+library(readxl)
+library(ggdendro)
+library(stargazer)
+library(tidyverse)
+library(tidyr)
+
+options(scipen=999)
+
+df=read_excel('~/bin/Изоляты/Table 1с.xlsx')
+df[sapply(df, is.character)] <- lapply(df[sapply(df, is.character)], 
+                                       as.factor)
+
+
+df1 =  read_excel('~/bin/Изоляты/morphological characteristics.xlsx')
+
+df1 %>% 
+  pivot_longer(cols = c('Total':'Tuber'),
+               names_to = 'Morphological characteristics',
+               values_to = 'value')->longer
+
+```
+
+
+
+
+## Описательные статистики
+
+
+```{r,message=FALSE,warning=F}
+stargazer(df1,summary=F,type='text')
+
+```
+
+
+```{r , message=FALSE,warning=FALSE}
+library(psych)
+describe(df)
+stargazer::stargazer(as.data.frame(df[10:11]), digits=1,flip = TRUE,type='latex')
+```
+
+
+
+```{r, , message=FALSE,warning=FALSE }
+df %>% 
+  ggplot(aes(IAA_production))+
+  geom_histogram(fill = "cornflowerblue", color = "black",bins=20)+
+  theme_bw()+
+  labs(x='IAA production mkg/ml distribution',
+       y='Number of observations') +
+  theme(axis.title.x = element_text(size=16, vjust=0.5),axis.title.y = element_text(size=16))+
+  theme(axis.text.x = element_text( size=12))+
+  theme(axis.text.y = element_text( size=12))+
+  scale_y_continuous(n.breaks=4)
+  
+  
+  
+ggsave("~/Изоляты/1 img/Fig2.tiff", width = 20, height = 15, units = "cm",dpi=1200)
+```
+
+
+
+
+
+
+
+
+
+```{r, message=FALSE,warning=FALSE}
+library(pander)
+sh1 <- shapiro.test(df$IAA_production)
+pander(sh1)
+
+```
+
+
+```{r, message=FALSE,warning=FALSE}
+sh2 <- shapiro.test(df$Antagonistic_activity)
+pander(sh2)
+```
+
+
+
+
+
+
+
+```{r,  message=FALSE,warning=FALSE}
+df %>% 
+  ggplot(aes(Antagonistic_activity))+
+  geom_histogram(fill = "orangered", color = "black")+
+  theme_bw()+
+  labs(x='Antagonistic activity, % distribution',
+       y='Number of observations') +
+  theme(axis.title.x = element_text(size=16, vjust=0.5),axis.title.y = element_text(size=16))+
+  theme(axis.text.x = element_text( size=12))+
+  theme(axis.text.y = element_text( size=12))+
+  scale_y_continuous(n.breaks=4)
+  
+  
+  
+#ggsave("~/Изоляты/1 img/Fig3.tiff", width = 20, height = 15, units = "cm",dpi=1200)
+```
+
+
+
+
+
+Figure 1 and Figure 2 describe IAA production's and Antagonistic activity's  distributions  respectively. Together with graphics the results of Shapiro test confirm that our data is not normally distributed: IAA production's is left-skewed, meanwhile Antagonistic activity's  distribution is right-skewed. So that in further investigations we should use non-parametric test.
+
+
+
+
+
+
+
+```{r}
+longer %>% 
+  ggplot(aes(x=`Potato varieties`, y = value, fill=`Morphological characteristics`))+
+  labs(x='Potato varieties')+
+  geom_bar(stat='identity',position=position_dodge())+
+  scale_fill_manual(values = c('#e6194b', '#3cb44b', '#ffe119', '#4363d8', '#f58231'))+
+  labs(y='Number of isolates')+
+   theme_bw()+
+  theme(axis.title.x = element_text(size=16),axis.title.y = element_text(size=16))+
+  theme(axis.text.x = element_text( size=15, angle=15))+
+  theme(axis.text.y = element_text( size=15))+
+  theme(legend.text = element_text(size=15), legend.title = element_blank())+
+  scale_y_continuous(n.breaks=6)
+
+ggsave("~/bin/Изоляты/sub/Fig1.jpg",width=30, height=20, units = "cm",dpi=800)
+ggsave("~/bin/Изоляты/sub/Fig1.tiff",width=30, height=20, units = "cm",dpi=800)
+
+```
+
+
+
+
+```{r,  message=FALSE,warning=FALSE}
+library(forcats)
+longer %>%
+  mutate(`Potato varieties` = factor(`Potato varieties`,
+                                     levels = sort(unique(`Potato varieties`)))) %>%
+  ggplot(aes(x = `Potato varieties`, y = value,
+             fill = `Morphological characteristics`)) +
+  geom_bar(stat = "identity", position = position_dodge(preserve = "single")) +
+  labs(x = "Potato varieties", y = "Number of isolates") +
+  scale_fill_manual(values = c("#e6194b", "#3cb44b", "#ffe119", "#4363d8", "#f58231")) +
+  scale_y_continuous(n.breaks = 6) +
+  theme_bw() +
+  theme(
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    axis.text.x  = element_text(size = 15, angle = 15, hjust = 0.9),
+    axis.text.y  = element_text(size = 15),
+    legend.text  = element_text(size = 15),
+    legend.title = element_blank()
+  )
+
+#ggsave("~/bin/Изоляты/sub/Fig1.jpg",width=30, height=20, units = "cm",dpi=200)
+
+
+ggsave(
+  filename = "~/bin/Изоляты/sub/Fig1.svg",
+  plot = last_plot(),     # or replace with your ggplot object, e.g. plot = p
+  width = 80,
+  height = 20,
+  units = "cm",
+  dpi = 200,
+  device = "svg"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r,  message=FALSE,warning=FALSE}
+df %>% dplyr::select(c(Endospore_formation:Antagonistic_activity))->to_clust
+
+rownames(to_clust)=df$Isolates
+
+D <- dist(scale(to_clust), method = "euclidean")
+
+hc <- hclust(D, method = "average")
+plot(hc, main = "average linkage method", cex = 0.7)
+rect.hclust(hc, k = 4, border = "red")
+
+
+dendr    <- dendro_data(hc, type="rectangle") # convert for ggplot
+clust    <- cutree(hc,k=4)                    # find 2 clusters
+clust.df <- data.frame(label=names(clust), cluster=factor(clust))
+# dendr[["labels"]] has the labels, merge with clust.df based on label column
+dendr[["labels"]] <- merge(dendr[["labels"]],clust.df, by="label")
+# plot the dendrogram; note use of color=cluster in geom_text(...)
+ggplot() + 
+  geom_segment(data=segment(dendr), aes(x=x, y=y, xend=xend, yend=yend)) + 
+  geom_text(data=label(dendr), aes(x, y, label=label, hjust=0, color=cluster), 
+            size=3) +
+  labs(y='Similarity',color="Clusters")+
+  coord_flip() + scale_y_reverse(expand=c(0.2, 0)) + 
+  theme(axis.line.y=element_blank(),
+        axis.ticks.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.title.y=element_blank(),
+        panel.background=element_rect(fill="white"),
+        panel.grid=element_blank())
+
+#ggsave("~/Изоляты/1 img/Fig7.tiff", width = 20, height = 15, units = "cm",dpi=1200)
+
+
+ggsave(
+  filename = "~/bin/Изоляты/sub/Similarity.svg",
+  plot = last_plot(),     # or replace with your ggplot object, e.g. plot = p
+  width = 30,
+  height = 20,
+  units = "cm",
+  dpi = 200,
+  device = "svg"
+)
+```
+
+
+Dendogram was obtained the grouping carried out by the UPGMA( Unweighted average linkage clustering) algorithm from an Euclidean distance (Euclidean distance formula $d\left(p,q\right)   = \sqrt {\sum _{i=1}^{n}  \left( q_{i}-p_{i}\right)^2 }$)  between different morphological characteristics  matrix, IAA production and Antagonistic activity. 
+
+
+
+
+```{r,  message=FALSE,warning=FALSE}
+average <- cutree(hc, k = 4)
+
+df$average=as.factor(average)
+
+k1=kruskal.test(df$IAA_production,df$average)
+k2=kruskal.test(df$Antagonistic_activity,df$average)
+
+pander(k1)
+pander(k2)
+```
+
+
+Though we obtained the cluster we are interested in (the rightmost cluster on Figure 4), both dendogram and the results of Kruskal-Wallis test shows problems in this clusterization: grouping is not balanced - meanwhile thew second cluster contains the majority of observations the third consists only from one observation;  the values of  p-value is not so far from conventional 0.05.
+
+
+
+
+
+
+# Clusterization k-means
+
+
+So we will apply k-mean clusterization. This method is aimed to divide our observations in k group (where k < number of observations) with the purpose of the minimization of within-cluster sum of squares (in other words variance). That can be written formally as:
+$arg \: min \,  \sum^{k}_{i=1} \, \sum_{x \in S_i} \, ||x-\mu||^2= arg \: min \, \sum^{k}_{i=1} \, |S_i| \, Var(S_i)$
+
+The advantage of this method is that it can allow us to choose desired number of groups, so in accordance with previous clusterization and  Silhouette method  results we will use larger number of clusters - 6.
+
+
+
+
+
+
+
+```{r,  message=FALSE,warning=FALSE}
+library(factoextra)
+fviz_nbclust(to_clust, kmeans, method = "silhouette") +
+labs(subtitle = "Silhouette method")
+```
+
+
+Здесь код для выполнения k means 
+
+```{r,  message=FALSE,warning=FALSE}
+kclust <- kmeans(to_clust, 6)
+to_clust$k <- factor(kclust$cluster)
+df$k <- factor(kclust$cluster)
+```
+
+Но чтобы он всегда не давал резульаты на рандоме сохранил в отдельный файл и теперь открываю его. 
+
+
+
+```{r,  message=FALSE,warning=FALSE}
+df1 <- read.csv("~/bin/Изоляты/dat.csv")
+df1$k <- as.factor(df1$k)
+```
+
+
+
+
+
+```{r,  message=FALSE,warning=FALSE}
+df1 %>% 
+  ggplot(aes(k,IAA_production,fill=k))+
+  geom_boxplot()+
+  labs(y='IAA production mkg/ml',x='Clusters')+
+  theme_bw()+
+    theme(axis.title.x = element_text(size=16, vjust=0.5),axis.title.y = element_text(size=16))+
+  theme(axis.text.x = element_text( size=12))+
+  theme(axis.text.y = element_text( size=12))+
+  scale_y_continuous(n.breaks=4)+
+ guides(fill=guide_legend(title="Clusters"))
+  
+  
+  
+ggsave("~/bin/Изоляты/1 img/Fig5.tiff", width = 20, height = 15, units = "cm",dpi=1200)
+  
+
+
+```
+
+
+
+
+```{r,  message=FALSE,warning=FALSE}
+df1 %>% 
+  ggplot(aes(IAA_production,Antagonistic_activity,color=k,label=Isolates))+
+  geom_point(size=4)+
+  theme_bw()+
+  geom_encircle()+
+  labs(x='IAA production mkg/ml')
+```
+
+
+
+
+
+
+
+
+
+```{r,  message=FALSE,warning=FALSE}
+
+df1$Clusters=df1$k
+df1 %>% 
+  ggplot(aes(IAA_production,Antagonistic_activity,color=Clusters,label=Isolates))+
+  geom_point(size=2)+
+  theme_bw()+
+  #geom_encircle()+
+  geom_text(label=df$Isolates,size=3)+
+  labs(x=expression('IAA production '~mu*'g/ml'),y='Antagonistic activity, %', fill='CLusters')+
+      theme(axis.title.x = element_text(size=16, vjust=0.5),axis.title.y = element_text(size=16))+
+  theme(axis.text.x = element_text( size=12))+
+  theme(axis.text.y = element_text( size=12))+
+  scale_y_continuous(n.breaks=4)+
+  guides(fill=guide_legend(title="Clusters"))
+  
+  
+  
+#ggsave("~/Изоляты/sub/Fig2.jpg", width = 20, height = 15, units = "cm",dpi=600)
+
+ggsave(
+  filename = "~/bin/Изоляты/sub/Fig2.svg",
+  plot = last_plot(),     # or replace with your ggplot object, e.g. plot = p
+  width = 30,
+  height = 20,
+  units = "cm",
+  dpi = 200,
+  device = "svg"
+)
+```
+
+
+```{r,  message=FALSE,warning=FALSE}
+library(ggpubr)
+p2=df1 %>% 
+  ggplot(aes(k,Antagonistic_activity,fill=k))+
+  geom_boxplot(show.legend = F)+
+  labs(y='Antagonistic activity, %',x='Clusters')+
+  theme_bw()+
+  theme(axis.title.x = element_text(size=16, vjust=0.5),axis.title.y = element_text(size=16))+
+  theme(axis.text.x = element_text( size=12))+
+  theme(axis.text.y = element_text( size=12))+
+ 
+  scale_y_continuous(n.breaks=4)+
+  
+  guides(fill=guide_legend(title="Clusters"))
+  
+
+
+p1=df1 %>% 
+  ggplot(aes(k,IAA_production,fill=k))+
+  geom_boxplot()+
+  labs(y=expression('IAA production '~mu*'g/ml'),x='Clusters')+
+  theme_bw()+
+  theme(axis.title.x = element_text(size=16, vjust=0.5),axis.title.y = element_text(size=16))+
+  theme(axis.text.x = element_text( size=12))+
+  theme(axis.text.y = element_text( size=12))+
+   theme(legend.text = element_text(size=15), legend.title = element_text(size=16) )+
+  scale_y_continuous(n.breaks=4)+
+  guides(fill=guide_legend(title="Clusters"))
+  
+
+
+
+
+ggarrange(p1,p2 + rremove("x.text"),labels = c("a", "b"))
+library(ggpubr)
+#ggsave("~/Изоляты/sub/Fig3.jpg", width = 35, height = 15, units = "cm",dpi=600)
+
+ggsave(
+  filename = "~/bin/Изоляты/sub/Fig3.svg",
+  plot = last_plot(),     # or replace with your ggplot object, e.g. plot = p
+  width = 30,
+  height = 20,
+  units = "cm",
+  dpi = 200,
+  device = "svg"
+)
+```
+
+
+
+```{r,  message=FALSE,warning=FALSE}
+k1 <- kruskal.test(df1$Antagonistic_activity ~ df$k)
+k2 <- kruskal.test(df1$IAA_production ~ df$k)
+
+pander(k1)
+pander(k2)
+
+```
+
+
+```{r,  message=FALSE,warning=FALSE}
+tab1=df1 %>% 
+  group_by(k) %>% 
+  summarise(mean_IAA_production=mean(IAA_production),mean_Antagonistic_activity=mean(Antagonistic_activity)
+            ) %>% arrange(-mean_IAA_production)
+
+
+tab1 %>% knitr::kable("markdown")
+```
+
+According to statistical tests and visualization k-means partition fits better for our data:
+we have managed to point out interesting group with highest IAA production and Antagonistic values as we can see that in Figure 6. This group is represented by 	RS R 3 and 	RSE L 22 isolates (cluster number 2), the values of p-value in Kruskall-Wallis tests are quite low so we can with substantial reassurance reject $H_0$ so that there are statistically significant differences between clusters, that can be also observed in Figure 6. 
+ 
+ 
+ 
+Analysis of the data was done using R Core Team (2021). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
+
+
+
+```{r}
+longer %>% 
+  ggplot(aes(`Potato varieties`,value, fill=`Morphological characteristics`))+
+  geom_bar(stat='identity',position=position_dodge())+
+  scale_fill_manual(values = c('#e6194b', '#3cb44b', '#ffe119', '#4363d8', '#f58231'))+
+  labs(y='Number of isolates')+
+  theme_light()+
+  theme(axis.text.x = element_text(angle=15))+
+  theme(axis.title.x = element_text(size=16, vjust=0.5),axis.title.y = element_text(size=16))+
+  theme(axis.text.x = element_text( size=12))+
+  theme(axis.text.y = element_text( size=8))+
+  theme(legend.title = element_blank())+
+  scale_y_continuous(n.breaks=4)
+
+ggsave("Fig11.tiff", width = 20, height = 15, units = "cm",dpi=1200)
+
+df1$Clusters=df1$k
+df1 %>% 
+  ggplot(aes(IAA_production,Antagonistic_activity,color=Clusters,label=Isolates))+
+  geom_point(size=2)+
+  theme_bw()+
+  geom_encircle()+
+  geom_text(label=df$Isolates,size=3)+
+  labs(x=expression("IAA,"~mu*"g/ml"),
+                    y='Antagonistic activity, %')+
+  theme(axis.title.x = element_text(size=16, vjust=0.5),axis.title.y = element_text(size=16))+
+  theme(axis.text.x = element_text( size=12))+
+  theme(axis.text.y = element_text( size=12))+
+  scale_y_continuous(n.breaks=4)+
+  guides(fill=guide_legend(title="Clusters"))
+
+
+
+ggsave("Fig21.tiff", width = 20, height = 15, units = "cm",dpi=1200)
+
+
+df1 %>% 
+  ggplot(aes(k,IAA_production,fill=Clusters))+
+  geom_boxplot()+
+  labs(y=expression("IAA,"~mu*"g/ml"),,x='Clusters')+
+  theme_bw()+
+  theme(axis.title.x = element_text(size=16, vjust=0.5),axis.title.y = element_text(size=16))+
+  theme(axis.text.x = element_text( size=12))+
+  theme(axis.text.y = element_text( size=12))+
+  scale_y_continuous(n.breaks=4)
+
+ggsave("Fig23.tiff", width = 20, height = 15, units = "cm",dpi=1200)
+```
+
+
+
+
+
+
+
+
+
+
+
